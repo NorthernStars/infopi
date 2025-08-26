@@ -7,6 +7,7 @@ from rich.table import Table
 import time
 import os
 import hashlib
+import csv
 
 
 def load_urls_with_names(filepath="URLS.txt"):
@@ -81,7 +82,6 @@ def display_events(future_events, num_of_elements_displayed=10):
     table.add_column("End Time")
     table.add_column("Event Name")
     table.add_column("Description")
-    table.add_column("Location")
     table.add_column("Calendar Name")
 
     now = datetime.now().astimezone(local_tz)
@@ -105,7 +105,6 @@ def display_events(future_events, num_of_elements_displayed=10):
             if dt_end.time().hour == 23 and dt_end.time().minute == 59 else dt_end.strftime('%d.%m. %H:%M'),
             event.get('summary').strip(),
             event.get('description').strip() if event.get('description') else "",
-            event.get('location').strip() if event.get('location') else "",
             event.get('calendar_name'),  # Display calendar name
             style=style)
 
