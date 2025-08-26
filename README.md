@@ -3,37 +3,21 @@ This little python script feteches sheduled appointments from a teamup.com onlin
 It is designed to work with a Raspberry Pi with Raspberry Pi OS Lite (console only) and a monitor as infoscreen.
 
 ## Installation
-Just copy the main.py to the Pis user home directoy and start it.
-For autostart, enable autologin for the defauult user via ssh as default user:
+1. Clone this repository to the *infopi* directory in the Pis default user home directory:
 
-    sudo raspi-config
+    git clone https://github.com/NorthernStars/infopi.git
     
-Enable *Console Autologin* from submenu *System Options* and reboot.
-The default user should be auto logged in after reboot.
+2. Go into the *infopi* directoy
 
-Install the requirements of the script using *pip* (See below for virtual environment):
-
-    pip install -r requirements.txt
+    cd infopi
     
-or use apt:
+3. Make the script executable
 
-    sudo apt install -y python3-requests python3-icalendar python3-tz python3-rich
+    chmod a+x install.sh uninstall.sh
 
-And add the following line to your .bashhrc file inside the users home directory:
+4. Run the install script as root:
 
-    # Autostart calendar
-    sleep 3 && python3 /home/robot/main.py
-    
-After rebooting again, the default user should be auto logged in and the script should start.
-
-### Virtueal Environment (venv)
-Instead of a systemwide installation of the required packages, you can use a virtual python environment like this:
-
-    sudo apt install -y python3-venv
-    python3 -m venv .venv
-    source .venv/bin/activate
-    python -m pip install --upgrade pip setuptools wheel
-    pip install -r requirements.txt
+    sudo ./install.sh
 
 ## Usage
 Create a file *URLS.txt* at the same directory as the *main.py*.
@@ -43,4 +27,11 @@ Enter ics file links and a name at every row, like this:
    https://ics.teamup.com/feed/.../10974149.ics, Max (Python)
    
 with URLs to *.ics* files with appointments. The list can include several ics links and a name of the timetable.
-The script will check the files hash for changes every second. 
+The script will check the files hash for changes every second.
+
+## Uninstallation
+Run the uninstall script:
+
+    sudo ./uninstall.sh
+    
+Uninstall is AI generated and was not tested, so use with caution!
