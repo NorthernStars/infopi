@@ -7,11 +7,11 @@ It is designed to work with a Raspberry Pi with Raspberry Pi OS Lite (console on
 
     git clone https://github.com/NorthernStars/infopi.git
     
-2. Go into the *infopi* directoy
+2. Go into the *infopi* directoy:
 
     cd infopi
     
-3. Make the script executable
+3. Make the scripts executable:
 
     chmod a+x install.sh uninstall.sh
 
